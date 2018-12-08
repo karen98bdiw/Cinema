@@ -2,11 +2,12 @@ package com.example.karen.cinema;
 
 import android.net.Uri;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Film {
+public class Film implements Serializable{
     private String filmName;
     private String fimlImgUri;
     private List<Seans> seanses = new ArrayList<>();
