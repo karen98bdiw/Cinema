@@ -1,9 +1,10 @@
 package com.example.karen.cinema;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Seans {
+public class Seans implements Serializable{
 
    private Date seansDate;
    private Hall hall;
