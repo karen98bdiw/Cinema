@@ -1,9 +1,11 @@
 package com.example.karen.cinema;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Hall {
+public class Hall implements Serializable {
 
     public static final Hall HALL_1;
     public static final Hall HALL_2;
@@ -23,18 +25,27 @@ public class Hall {
     private  List<Place> places;
 
 
+
+
     public Hall(String hallName, int rowCount, int seatCount) {
         this.hallName = hallName;
+        this.rowCount = rowCount;
+        this.seatCount = seatCount;
         createPlaces(rowCount,seatCount);
     }
 
     private void createPlaces(int rowCount, int seatCount){
+        places = new ArrayList<>();
         for(int i = 0;i < rowCount;i++){
             for(int j = 0;j < seatCount;j++){
                 Place place = new Place(i,j);
                 places.add(place);
             }
         }
+    }
+
+    public int getSeatCount() {
+        return seatCount;
     }
 
     public String getHallName() {

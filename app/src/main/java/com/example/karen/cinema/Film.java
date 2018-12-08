@@ -2,13 +2,14 @@ package com.example.karen.cinema;
 
 import android.net.Uri;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Film {
     private String filmName;
     private String fimlImgUri;
-    private List<Seans> seanses;
+    private List<Seans> seanses = new ArrayList<>();
 
     public Film(String filmName, String fimlImgUri) {
         this.filmName = filmName;
