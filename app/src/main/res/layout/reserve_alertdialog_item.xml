@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="600dp">
+
+    <EditText
+        android:id="@+id/userNameInput"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:hint="writeName"
+        />
+    <EditText
+        android:id="@+id/userSurnameInput"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:hint="writeSurname"
+        />
+
+</LinearLayout>
