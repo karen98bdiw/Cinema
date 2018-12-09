@@ -41,7 +41,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
         viewHolder.seansBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,Seanses.class);
+                Intent intent = new Intent(context,SeansesActivity.class);
                 intent.putExtra("currentFilm",film);
                 context.startActivity(intent);
             }

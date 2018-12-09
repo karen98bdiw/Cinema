@@ -1,6 +1,8 @@
 package com.example.karen.cinema;
 
 import android.content.Intent;
+import android.graphics.Point;
+import android.graphics.PointF;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,6 +17,7 @@ public class HallViewActivity extends AppCompatActivity {
     private List<Place> placesList;
     private Hall hall;
     private RecyclerView hallViewRecycler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
