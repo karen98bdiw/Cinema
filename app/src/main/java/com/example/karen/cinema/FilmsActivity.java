@@ -1,23 +1,55 @@
 package com.example.karen.cinema;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class FilmsActivity extends AppCompatActivity {
+
+    private boolean isAdmin;
     private List<Film> films;
     private RecyclerView filmsRecycler;
+    private Hall resultHall;
+    private String resultFilmName;
+    private Film resultFilm;
+    private Button addFilmBtn;
+    private FilmsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_films);
+
+        addFilmBtn =  findViewById(R.id.addFilmBtn);
+
+        final Intent intent = getIntent();
+        isAdmin = intent.getBooleanExtra("isAdmin",false);
+        if(isAdmin){
+            Toast.makeText(this,"you are Admin",Toast.LENGTH_SHORT).show();
+            addFilmBtn.setVisibility(View.VISIBLE);
+
+        }else{
+            Toast.makeText(this,"you are User",Toast.LENGTH_SHORT).show();
+        }
+
+        addFilmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(FilmsActivity.this,AddFilm.class);
+                startActivityForResult(intent1,1);
+            }
+        });
 
         films = new ArrayList<>();
 
@@ -47,7 +79,26 @@ public class FilmsActivity extends AppCompatActivity {
                 LinearLayoutManager.VERTICAL, false);
         filmsRecycler.setLayoutManager(manager);
 
-        final FilmsAdapter adapter = new FilmsAdapter(films,FilmsActivity.this);
+        adapter = new FilmsAdapter(films,FilmsActivity.this);
         filmsRecycler.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                resultFilmName = data.getStringExtra("filmName");
+                resultHall = (Hall) data.getSerializableExtra("currentHall");
+                resultFilm = new Film(resultFilmName,"");
+                resultFilm.addSeans(new Seans(resultHall, new Date(2018,12,25,18,0,0),
+                        1000));
+                films.add(resultFilm);
+                Toast.makeText(FilmsActivity.this,"size" + films.size(),Toast.LENGTH_SHORT).show();
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                Toast.makeText(FilmsActivity.this,"not Result",Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

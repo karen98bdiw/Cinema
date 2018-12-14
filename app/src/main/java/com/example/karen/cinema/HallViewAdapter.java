@@ -75,9 +75,9 @@ public class HallViewAdapter extends RecyclerView.Adapter<HallViewAdapter.ViewHo
                                         String userSurname = userSurnameInput.getText().toString();
                                         int numerOfRow = place.getNumberOfRow();
                                         int numberOfCol = place.getNumberOfColl();
-                                      place.soldThisPlace(new User(userName,userSurname,numerOfRow,numberOfCol));
-                                        Log.e("users","users" + place.users.size());
+                                        place.soldThisPlace(new User(userName,userSurname,numerOfRow,numberOfCol));
                                         viewHolder.place.setBackgroundColor(Color.RED);
+                                        viewHolder.place.setEnabled(false);
                                     }
                                 })
                         .setNegativeButton("CANCEL",
@@ -114,7 +114,6 @@ public class HallViewAdapter extends RecyclerView.Adapter<HallViewAdapter.ViewHo
             super(itemView);
 
             place = itemView.findViewById(R.id.place);
-
 
         }
 

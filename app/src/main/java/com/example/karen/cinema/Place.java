@@ -15,6 +15,8 @@ public class Place implements Serializable{
     private int numberOfRow;
     private int numberOfColl;
 
+    private int placePrice;
+
     public Place(int numberOfRow, int numberOfColl) {
         this.numberOfRow = numberOfRow;
         this.numberOfColl = numberOfColl;
@@ -31,4 +33,6 @@ public class Place implements Serializable{
     public int getNumberOfColl() {
         return numberOfColl;
     }
+
+
 }

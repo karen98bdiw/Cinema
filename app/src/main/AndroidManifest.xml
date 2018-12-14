@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".SeansesActivity" />
         <activity android:name=".HallViewActivity" />
-        <activity android:name=".FilmsActivity"></activity>
+        <activity android:name=".FilmsActivity" />
+        <activity android:name=".AddFilm"></activity>
     </application>
 
 </manifest>

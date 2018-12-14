@@ -4,13 +4,14 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Seans implements Serializable{
+public class Seans implements Serializable {
 
-   private Date seansDate;
-   private Hall hall;
-   private int price;
 
-    public Seans(Hall hall, Date date,int price) {
+    private Date seansDate;
+    private Hall hall;
+    private int price;
+
+    public Seans(Hall hall, Date date, int price) {
         this.hall = hall;
         this.seansDate = date;
         this.price = price;

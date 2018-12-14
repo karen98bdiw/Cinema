@@ -14,9 +14,9 @@ public class Hall implements Serializable {
 
     static {
         HALL_1 = new Hall("Hall 1",20,10);
-        HALL_2 = new Hall("Hall 2",15,9);
-        HALL_3 = new Hall("Hall 3",30,20);
-        VIP_HALL = new Hall("VIP_HALL",10,5);
+        HALL_2 = new Hall("Hall 2",15,7);
+        HALL_3 = new Hall("Hall 3",8,4);
+        VIP_HALL = new Hall("VIP_HALL",2,4);
     }
 
     private String hallName;
@@ -47,6 +47,8 @@ public class Hall implements Serializable {
     public int getSeatCount() {
         return seatCount;
     }
+
+
 
     public String getHallName() {
         return hallName;

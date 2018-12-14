@@ -43,6 +43,7 @@ public class SeansesAdapter extends RecyclerView.Adapter<SeansesAdapter.ViewHold
             public void onClick(View v) {
                 Intent intent = new Intent(context,HallViewActivity.class);
                 intent.putExtra("currentHall",data.get(viewHolder.getAdapterPosition()).getHall());
+                intent.putExtra("seansPrice",data.get(viewHolder.getAdapterPosition()).getPrice());
                 context.startActivity(intent);
 
             }
