@@ -2,6 +2,10 @@ package com.example.karen.cinema;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteCursorDriver;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQuery;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -25,6 +29,7 @@ public class FilmsActivity extends AppCompatActivity {
     private Film resultFilm;
     private Button addFilmBtn;
     private FilmsAdapter adapter;
+    private String mainSeansPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,26 +56,29 @@ public class FilmsActivity extends AppCompatActivity {
             }
         });
 
+
         films = new ArrayList<>();
+
+
 
         filmsRecycler = findViewById(R.id.filmrecycler);
 
         Film film1 = new Film("Sherlok Holms","");
         film1.addSeans(new Seans(Hall.HALL_2,
                 new Date(2018,12,25,18,0,0),
-                2000));
+                "4000"));
         film1.addSeans(new Seans(Hall.HALL_2,
                 new Date(2018,12,25,18,0,0),
-                1000));
+                "3000"));
 
         films.add(film1);
         Film film2 = new Film("The number 21","");
         film2.addSeans(new Seans(Hall.HALL_2,
                 new Date(2018,12,25,18,0,0),
-                2000));
+                "2000"));
         film2.addSeans(new Seans(Hall.HALL_2,
                 new Date(2018,12,25,18,0,0),
-                1000));
+                "1000"));
         films.add(film2);
 
 
@@ -79,7 +87,7 @@ public class FilmsActivity extends AppCompatActivity {
                 LinearLayoutManager.VERTICAL, false);
         filmsRecycler.setLayoutManager(manager);
 
-        adapter = new FilmsAdapter(films,FilmsActivity.this);
+        adapter = new FilmsAdapter(films,FilmsActivity.this,isAdmin);
         filmsRecycler.setAdapter(adapter);
     }
 
@@ -88,17 +96,19 @@ public class FilmsActivity extends AppCompatActivity {
 
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
+                mainSeansPrice = data.getStringExtra("filmSeansPrice");
                 resultFilmName = data.getStringExtra("filmName");
                 resultHall = (Hall) data.getSerializableExtra("currentHall");
                 resultFilm = new Film(resultFilmName,"");
                 resultFilm.addSeans(new Seans(resultHall, new Date(2018,12,25,18,0,0),
-                        1000));
+                        mainSeansPrice));
                 films.add(resultFilm);
-                Toast.makeText(FilmsActivity.this,"size" + films.size(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(FilmsActivity.this,"size" + " " + "RESULT_OK" + " " + films.size(),Toast.LENGTH_SHORT).show();
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 Toast.makeText(FilmsActivity.this,"not Result",Toast.LENGTH_SHORT).show();
             }
         }
     }
+
 }

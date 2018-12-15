@@ -13,6 +13,14 @@
         android:layout_height="50dp"
         android:hint="filmName"
         />
+
+    <EditText
+        android:id="@+id/seansPriceFromActivity"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="PRICE"
+        />
+
     <Spinner
         android:id="@+id/chooseHallSpinner"
         android:layout_width="match_parent"

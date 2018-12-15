@@ -19,7 +19,8 @@
         <activity android:name=".SeansesActivity" />
         <activity android:name=".HallViewActivity" />
         <activity android:name=".FilmsActivity" />
-        <activity android:name=".AddFilm"></activity>
+        <activity android:name=".AddFilm" />
+        <activity android:name=".AddNewSeans"></activity>
     </application>
 
 </manifest>

@@ -9,9 +9,9 @@ public class Seans implements Serializable {
 
     private Date seansDate;
     private Hall hall;
-    private int price;
+    private String price;
 
-    public Seans(Hall hall, Date date, int price) {
+    public Seans(Hall hall, Date date, String price) {
         this.hall = hall;
         this.seansDate = date;
         this.price = price;
@@ -25,7 +25,7 @@ public class Seans implements Serializable {
         return hall;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 }

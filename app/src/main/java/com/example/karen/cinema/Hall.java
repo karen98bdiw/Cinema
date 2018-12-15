@@ -1,9 +1,19 @@
 package com.example.karen.cinema;
 
+import android.database.Cursor;
+import android.database.DatabaseErrorHandler;
+import android.database.sqlite.SQLiteCursorDriver;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQuery;
+
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import static android.content.Context.MODE_APPEND;
+import static android.content.Context.MODE_PRIVATE;
 
 public class Hall implements Serializable {
 
@@ -35,6 +45,7 @@ public class Hall implements Serializable {
     }
 
     private void createPlaces(int rowCount, int seatCount){
+
         places = new ArrayList<>();
         for(int i = 0;i < rowCount;i++){
             for(int j = 0;j < seatCount;j++){

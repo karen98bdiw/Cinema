@@ -11,21 +11,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class AddFilm extends AppCompatActivity {
+public class AddNewSeans extends AppCompatActivity {
 
     EditText filmNameEdit;
     Hall[] halls;
     Hall currentHall;
-    String gettedNewFilmName;
-    Button addBtn;
-    String seansPriceFromActivity;
-    EditText takedSeansPrice;
+    Button addBtnFromFilmActivity;
+    EditText seansPriceFromActivity;
+    String takedSeansPriceFromActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_film);
 
+        seansPriceFromActivity = findViewById(R.id.seansPriceFromActivity);
+
+        setContentView(R.layout.activity_add_new_seans);
         halls = new Hall[]{
                 Hall.HALL_1,
                 Hall.HALL_1,
@@ -33,10 +34,6 @@ public class AddFilm extends AppCompatActivity {
                 Hall.HALL_3,
                 Hall.VIP_HALL
         };
-
-        takedSeansPrice = findViewById(R.id.seansPriceFromActivity);
-        filmNameEdit = findViewById(R.id.filmName);
-        addBtn = findViewById(R.id.addBtn);
 
 
         String[] data = {"SELECT HALL", "Hall_1", "Hall_2","HALL_3","VIP_HALL"};
@@ -57,7 +54,7 @@ public class AddFilm extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
                 currentHall = halls[position];
-                }
+            }
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
 
@@ -65,14 +62,10 @@ public class AddFilm extends AppCompatActivity {
         });
 
 
-        addBtn.setOnClickListener(new View.OnClickListener() {
+        addBtnFromFilmActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gettedNewFilmName = filmNameEdit.getText().toString();
                 Intent returnIntent = new Intent();
-                seansPriceFromActivity = takedSeansPrice.getText().toString();
-                returnIntent.putExtra("filmSeansPrice",seansPriceFromActivity);
-                returnIntent.putExtra("filmName",gettedNewFilmName);
                 returnIntent.putExtra("currentHall",currentHall);
                 setResult(Activity.RESULT_OK, returnIntent);
                 finish();

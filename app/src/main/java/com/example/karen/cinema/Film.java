@@ -20,8 +20,9 @@ public class Film implements Serializable{
     public void addSeans(Seans seans){
 
         seanses.add(seans);
-
     }
+
+
 
     public String getFilmName() {
         return filmName;
